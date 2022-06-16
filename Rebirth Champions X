@@ -69,16 +69,6 @@ local function rgbToHex(rgb)
                     if string.find(instance.TextLabel.Text,"hatched") then
                         if string.find(instance.TextLabel.Text,"a") then
                             
-                            -- Get Counts
-                            local count = 0
-                            for i,v in pairs(game:GetService("Players"):GetChildren()) do
-                                for n,b in pairs(OnlyCount) do
-                                    if string.find(v.Name, b) then
-                                        count = v.leaderstats["Rebirths"].Value    
-                                    end
-                                end
-                            end
-                            
                             -- Other Features
                             local OSTime = os.time()
                             local Webhook = _G.Webhooksss
