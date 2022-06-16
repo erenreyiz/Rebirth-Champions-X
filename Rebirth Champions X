@@ -83,7 +83,7 @@ local function rgbToHex(rgb)
                                 if string.find(instance.TextLabel.Text,"Golden") then
                                     HatchText =  username .. " just hatched a **GOLDEN Legendary Cyber Monster**! (**0.09**)"
                                 else
-                                    HatchTex    t =  username .. " just hatched a **Legendary Cyber Monster**! (**0.09**)"
+                                    HatchText =  username .. " just hatched a **Legendary Cyber Monster**! (**0.09**)"
                                 end
 
                             elseif string.find(instance.TextLabel.Text,"Prismatic Pyramid")
