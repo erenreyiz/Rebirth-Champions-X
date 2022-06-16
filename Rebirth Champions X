@@ -88,9 +88,9 @@ local function rgbToHex(rgb)
 
                             elseif string.find(instance.TextLabel.Text,"Galactic Star") then
                                 if string.find(instance.TextLabel.Text,"Golden") then
-                                    HatchText = username  .. " just hatched a **GOLDEN Legendary Galactic Star**! (**0.06**)"
+                                    HatchText =  username  .. " just hatched a **GOLDEN Legendary Galactic Star**! (**0.06**)"
                                 else
-                                    HatchText = username  .. " just hatched a **Legendary Galactic Star**! (**0.06**)"
+                                    HatchText =  username  .. " just hatched a **Legendary Galactic Star**! (**0.06**)"
                                 end
 
                             elseif string.find(instance.TextLabel.Text,"Crimson Skull") then
