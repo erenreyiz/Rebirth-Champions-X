@@ -128,7 +128,7 @@ local function rgbToHex(rgb)
                                     ["url"] = ""
                                 },
                                 ["footer"] = {
-                                    ["text"] = "Egg #" .. abb(count) .. " | " .. abb(count2) .. " Rebirths",
+                                    ["text"] = " .. abb(count) .. "Rebirths",
                                 },
                                 ['timestamp'] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
                                 ["color"] = Hex,
