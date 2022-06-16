@@ -91,9 +91,6 @@ local function rgbToHex(rgb)
                             local HatchText
                             if string.find(instance.TextLabel.Text,"Cyber Monster") then
                                 if string.find(instance.TextLabel.Text,"Golden") then
-                                if string.find(instance.TextLabel.Text,"Toxic") then
-                                    HatchText =  username .. " just hatched a **TOXIC Legendary Cyber Monster**! (**0.09%**)"
-                                else
                                     HatchText = username .. " just hatched a **GOLDEN Legendary Cyber Monster**! (**0.09**)"
                                 else
                                     HatchText = usernmae .. " just hatched a **Legendary Cyber Monster**! (**0.09**)"
