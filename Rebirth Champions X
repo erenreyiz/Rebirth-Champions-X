@@ -70,21 +70,11 @@ local function rgbToHex(rgb)
                         if string.find(instance.TextLabel.Text,"a") then
                             
                             -- Get Counts
-                            local plr = game.Players.LocalPlayer
-                            local OnlyCount = {plr.Name}
                             local count = 0
                             for i,v in pairs(game:GetService("Players"):GetChildren()) do
                                 for n,b in pairs(OnlyCount) do
                                     if string.find(v.Name, b) then
-                                        count = v.leaderstats["Eggs"].Value    
-                                    end
-                                end
-                            end
-                            local count2 = 0
-                            for i,v in pairs(game:GetService("Players"):GetChildren()) do
-                                for n,b in pairs(OnlyCount) do
-                                    if string.find(v.Name, b) then
-                                        count2 = v.leaderstats["Rebirths"].Value    
+                                        count = v.leaderstats["Rebirths"].Value    
                                     end
                                 end
                             end
@@ -101,6 +91,9 @@ local function rgbToHex(rgb)
                             local HatchText
                             if string.find(instance.TextLabel.Text,"Cyber Monster") then
                                 if string.find(instance.TextLabel.Text,"Golden") then
+                                if string.find(instance.TextLabel.Text,"Toxic") then
+                                    HatchText =  username .. " just hatched a **TOXIC Legendary Cyber Monster**! (**0.09%**)"
+                                else
                                     HatchText = username .. " just hatched a **GOLDEN Legendary Cyber Monster**! (**0.09**)"
                                 else
                                     HatchText = usernmae .. " just hatched a **Legendary Cyber Monster**! (**0.09**)"
@@ -108,6 +101,9 @@ local function rgbToHex(rgb)
 
                             elseif string.find(instance.TextLabel.Text,"Cyber Dragon") then
                                 if string.find(instance.TextLabel.Text,"Golden") then
+                                if string.find(instance.TextLabel.Text,"Toxic") then
+                                    HatchText = username .. " just hatched a **TOXIC Mythical Cyber Dragon**! (**0.009**)"
+                                else
                                     HatchText = username .. " just hatched a **GOLDEN Mythical Cyber Dragon**! (**0.009**)"
                                 else
                                     HatchText = username .. " just hatched a **Mythical Cyber Dragon**! (**0.009**)"
