@@ -51,7 +51,7 @@ local function rgbToHex(rgb)
             "SendNotification",
                     {
                             Title = "RCX Pet Hatcher",
-                           Text = "If you run into any bugs, please let me know! Contact me via discord",
+                            Text = "If you run into any bugs, please let me know! Contact me via discord",
                             Duration = 5
                        }
             )
