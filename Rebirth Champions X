@@ -74,7 +74,7 @@ local function rgbToHex(rgb)
                             for i,v in pairs(game:GetService("Players"):GetChildren()) do
                                 for n,b in pairs(OnlyCount) do
                                     if string.find(v.Name, b) then
-                                        count = v.leaderstats["Rebirths"].Value    
+                                        count = v.leaderstats[" Rebirths "].Value    
                                     end
                                 end
                             end
