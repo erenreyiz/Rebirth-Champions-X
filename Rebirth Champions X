@@ -66,7 +66,6 @@ local function rgbToHex(rgb)
     Chat.ChildAdded:Connect(function(instance)
         if string.find(instance.TextLabel.Text,"Server") then
             if string.find(instance.TextLabel.Text,_G.Username) then
-                if string.find(instance.TextLabel.Text,"just") then
                     if string.find(instance.TextLabel.Text,"hatched") then
                         if string.find(instance.TextLabel.Text,"a") then
                             
