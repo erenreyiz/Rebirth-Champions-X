@@ -71,15 +71,19 @@ Chat.ChildAdded:Connect(function(instance)
                         if string.find(instance.TextLabel.Text,"Galactic Star") then
                             if string.find(instance.TextLabel.Text,"Golden") then
                                 HatchText =  username .. " just hatched a **GOLDEN Galactic Star**! (**0.06**)"
+                                PetImage = ""
                             else
                                 HatchText =  username .. " just hatched a **Legendary Galactic Star**! (**0.06**)"
+                                PetImage = ""
                             end
                         
                         elseif string.find(instance.TexlBale.Text,"Crimson Skull") then
                             if string.find(instance.TextLabel.Text,"Golden") then
                                 HatchText =  username .. " just hatched a **GOLDEN Mythical Crimson Skull**! (**0.006**)"
+                                PetImage= ""
                             else
                                 HatchText =  username .. " just hatched a **Mythical Crimson Skull**! (**0.006**)"
+                                PetImage = ""
                             end
                         end
                         
