@@ -1,8 +1,3 @@
-d_G.Webhooksss = "" -- Webhook URL goes here
-_G.Hatchping = "" -- Change this to your User ID if u wanna get pinged for Secret Pet hatches e.g <@userid>
-_G.Username = "" -- Case Sensitive!!!! Only Put ONE username in here at once! if you put more then one, it wont work!
-_G.SendNotifications = true -- Change this to false if you dont want notifications to pop up upon execution
-
 -- Get Text Color
 local function rgbToHex(rgb)
 local hexadecimal = '0X'
