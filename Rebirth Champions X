@@ -1,98 +1,126 @@
-local HttpService = game:GetService("HttpService")
-local username = game:GetService("Players").LocalPlayer
-local chat = Player.PlayerGui.Chat.Frame.ChatChannelParentFrame["Frame_MessageLogDisplay"].Scroller
-local Webhook = _G.Webhook
-local icon = "https://www.roblox.com/headshot-thumbnail/image?userId="..userid.."&width=420&height=420&format=png"
-local HatchText
+d_G.Webhooksss = "" -- Webhook URL goes here
+_G.Hatchping = "" -- Change this to your User ID if u wanna get pinged for Secret Pet hatches e.g <@userid>
+_G.Username = "" -- Case Sensitive!!!! Only Put ONE username in here at once! if you put more then one, it wont work!
+_G.SendNotifications = true -- Change this to false if you dont want notifications to pop up upon execution
+
+-- Get Text Color
+local function rgbToHex(rgb)
+local hexadecimal = '0X'
+for key, value in pairs(rgb) do
+   local hex = ''
+   while(value > 0)do
+local index = math.fmod(value, 16) + 1
+value = math.floor(value / 16)
+hex = string.sub('0123456789ABCDEF', index, index) .. hex
+end
+if(string.len(hex) == 0)then
+hex = '00'
+elseif(string.len(hex) == 1)then
+hex = '0' .. hex
+end
+hexadecimal = hexadecimal .. hex
+end
+return hexadecimal
+end
+
+-- Getting some info needed for webhook
+local username = game:GetService("Players").LocalPlayer.Name
 local userid = game:GetService("Players").LocalPlayer.UserId
+local icon = "https://www.roblox.com/headshot-thumbnail/image?userId="..userid.."&width=420&height=420&format=png"
 
-function comma_value(amount)
-    local formatted = amount
-    while true do  
-        formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
-        if (k==0) then
-            break
+-- Some Random Notification stuff
+if _G.SendNotifications == true then
+    	game.StarterGui:SetCore(
+               	"SendNotification",
+                {
+			Title = "RCX Pet Hatcher",
+			Text = "Version 1.0.0, Updated and Maintained by PetSimulatorXPlayer#5011",
+			Duration = 5
+		}
+	)
+        
+        game.StarterGui:SetCore(
+		"SendNotification",
+                {
+                    	Title = "MS2 Pet Hatcher",
+                   	Text = "If you run into any bugs, please let me know! Contact me via discord",
+                    	Duration = 5
+               	}
+        )
+elseif _G.SendNotifications == false then
         end
-    end
-    return formatted
-end
 
-function toHex(x) 
-    local hex =  string.format("%x", x)
-    return hex:len() == 1 and "0"..hex or hex
-end
-function RGB2HEX(r,g,b) 
-    return "0x" .. toHex(r) .. toHex(g) .. toHex(b)
-end
+-- Connecting to chat
+local Headers = {["content-type"] = "application/json"}
+local Chat = game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame["Frame_MessageLogDisplay"].Scroller
 
-getgenv().TimeFormat = getgenv().TimeFormat or "TIME12" 
-
-local Times = {}
-Times["TIME12"] = "%%I:%%M %%p"
-Times["TIME24"] = "%%H:%%M"
-Times["DATE"] = "%%x"
-Times["TIMEZONE"] = "%%Z"
-Times["TIME"] = "%%X"
-
-function FormatTime(str: string)
-    for i,v in pairs(Times) do
-        str = str:gsub(i, v)
-    end
-    return str
-end
-
-chat.ChildAdded:Connect(function(instance))
-    local TextColor3 = instance.TextLabel.TextColor3
-    wait(.1)
-
-    if TextColor3 == Color3.fromRGB(255, 255, 255) then else
-        for _, playerName in pairs(playerNames) do
-            if string.find(instance.TextLabel.Text, username .. " hatched a ") then
-
-                if string.find(instance.TextLabel.Text,"Galactic Star") then
-                    if string.find(instance.Textlabel.Text,"Golden") then
-                        HatchText = username .. " just hatched a **GOLDEN Legendary Galactic Star**! (**0.06**)"
-                    else
-                        HatchText =  username .. " just hatched a **Legendary Galactic Star**! (**0.06**)"
-                    end
-                
-                elseif string.find(instance.TextLabel.Text,"Crimson Skull") then
-                    if string.find(instance.TextLabel.Text,"Golden") then
-                        HatchText =  username .. " just hatched a **GOLDEN Mythical Crimson Skull**! (**0.006**)"
-                    else
-                        HatchText =  username .. " just hatched a **Mythical Crimson Skull**! (**0.006**)"
-                    end
-                
-                elseif string.find(instance.TextLabel.Text,"Prismatic Pyramid") then
-                    if string.find(instance.TetxtLabel.Text,"Golden") then
-                        HatchText =  username .. " just hatched a **GOLDEN SECRET Prismatic Pyramid**! (**0.00007**)"
-                    else
-                        HatchText =  username .. " just hatched a **SECRET Prismatic Pyramid**! (**0.00007**)"
-                    end
+-- The Main Function
+Chat.ChildAdded:Connect(function(instance)
+    if string.find(instance.TextLabel.Text,"Server") then
+        if string.find(instance.TextLabel.Text,_G.Username) then
+                if string.find(instance.TextLabel.Text,"hatched") then
+                    if string.find(instance.TextLabel.Text,"a") then
+                        
+                        -- Other Features
+                        local OSTime = os.time()
+                        local Webhook = _G.Webhooksss
+                        local Time = os.date('!*t', OSTime)
+                        local TextColor3 = instance.TextLabel.TextColor3
+                        local RGB = {TextColor3.R*255,TextColor3.G*255,TextColor3.B*255}
+                        local Hex = tonumber(rgbToHex({RGB[1],RGB[2],RGB[3]}))
+                        
+                        -- Get Pets and the Text/Image (Legendarys Only)
+                        local HatchText
+                        if string.find(instance.TextLabel.Text,"Galactic Star") then
+                            if string.find(instance.TextLabel.Text,"Golden") then
+                                HatchText =  username .. " just hatched a **GOLDEN Galactic Star**! (**0.06**)"
+                            else
+                                HatchText =  username .. " just hatched a **Legendary Galactic Star**! (**0.06**)"
+                            end
+                        
+                        elseif string.find(instance.TexlBale.Text,"Crimson Skull") then
+                            if string.find(instance.TextLabel.Text,"Golden") then
+                                HatchText =  username .. " just hatched a **GOLDEN Mythical Crimson Skull**! (**0.006**)"
+                            else
+                                HatchText =  username .. " just hatched a **Mythical Crimson Skull**! (**0.006**)"
+                            end
+                        end
+                        
+                        -- Hatch Ping Info
+                        local SecretPing
+                        if string.find(instance.TextLabel.Text,"Secret") then
+                            SecretPing = _G.Hatchping
+                        else
+                            SecretPing = ""
+                        end
+                        
+                        -- The Webhook
+                            local Info = {
+                                ["content"] = SecretPing,
+                                ["embeds"] = {
+                                {
+                                        ["description"] = HatchText,
+                                ["author"] = {
+                                        ["name"] = username,
+                                        ["url"] = "https://www.roblox.com/users/".. userid .."/profile",
+                                        ["icon_url"] = icon,
+                                },
+                                ["thumbnail"] = {
+                                    ["url"] = ""
+                                },
+                                ["footer"] = {
+                                    ["text"] = "Rebirth Champions X",
+                                },
+                                ['timestamp'] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
+                                ["color"] = Hex,
+                                ["fields"] = {}},}}
+                            local Info = game:GetService("HttpService"):JSONEncode(Info)
+                            local HttpRequest = http_request;
+                            if syn then HttpRequest = syn.request else HttpRequest = http_request end
+                                HttpRequest({Url=Webhook, Body=Info, Method="POST", Headers=Headers})
                 end
-
-                local Data = {
-                    ["content"] = _G.HatchPing,
-                    }
-                    ["embeds"] = {{
-                    ["author"]{
-                            ["author"] = username,
-                            ["Url"] = "https://www.roblox.com/users/".. userid .."/profile",
-                            ["Icon"] = icon
-                    ["Body"] = {
-                        ["Description"] = HatchText,
-                        ["color"] =  os.date(FormatTime(getgenv().TimeFormat), os.time()),
-                    ["Footer"] =
-                            ["Text"] = "Rebirth Cahmpions X"
-                            {{
-                        }
-                        }
-                    }}}
-                }
-                local HttpRequest = syn and syn.request or http_request
-                HttpRequest(({Url= Webhook, Body = HttpService:JSONEncode(Data), Method = "POST", Headers = {["content-type"] = "application/json"}})
             end
         end
     end
 end)
-print('Rebirth Champions X Pet Hatcher, Updated by Leichtespiele#6050')
+print('RCX Pet Hatcher V1.0.0, Maintained and Updated by PetSimulatorXPlayer#5011')
