@@ -65,7 +65,6 @@ Chat.ChildAdded:Connect(function(instance)
                         local Hex = tonumber(rgbToHex({RGB[1],RGB[2],RGB[3]}))
                         
                         -- Get Pets and the Text/Image (Legendarys Only)
-                        local Dontsend
                         local HatchText
                         local PetImage
                         if string.find(instance.TextLabel.Text,"Galactic Star") then
